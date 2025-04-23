@@ -41,7 +41,6 @@ const handleClick = async function (e) {
       break;
     case "telegram":
 
-      console.log(`tg://resolve?domain=sell_hot_leads_bot&start=${base}`);
       window.location.href = `tg://resolve?domain=sell_hot_leads_bot&start=${
         getUtmParams().ad
       }-${leadIp.country}`;
