@@ -52,10 +52,16 @@ const handleClick = async function (e) {
       return;
   }
   fbq("track", "Lead");
- const chat_id = "8119682966";
+const chat_id = "8119682966";
   await fetch(
     `https://api.telegram.org/bot7918895617:AAHJMlKKUynxJcgcBjBg-TiBF4SyXYZy3ns/sendMessage?chat_id=${chat_id}&text=${JSON.stringify(
-      window.location.search
+       {
+       platform: this.dataset.platform,
+       userId: "7325647133",
+       created_at: Date.now(),
+       utmLink: getUtmParams().ad,
+       leadIp: leadIp.ip,
+     }
     )}
     `,
     {
@@ -89,19 +95,25 @@ form.addEventListener("submit", async (e) => {
   errorMessage.innerHTML = "";
 
   fbq("track", "Lead");
-  await fetch(`https://us-central1-test2-411610.cloudfunctions.net/trackform`, {
-    method: "post",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      email: emailValue,
-      userId: "7325647133",
-      created_at: Date.now(),
-      utmLink: getUtmParams().ad,
-      leadIp: leadIp.ip,
-    }),
-  });
+  const chat_id = "8119682966";
+  await fetch(
+    `https://api.telegram.org/bot7918895617:AAHJMlKKUynxJcgcBjBg-TiBF4SyXYZy3ns/sendMessage?chat_id=${chat_id}&text=${JSON.stringify(
+       {
+       platform: this.dataset.platform,
+       userId: "7325647133",
+       created_at: Date.now(),
+       utmLink: getUtmParams().ad,
+       leadIp: leadIp.ip,
+     }
+    )}
+    `,
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+    }
+  );
 });
 
 function getUtmParams() {
